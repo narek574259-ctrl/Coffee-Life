@@ -1,1 +1,406 @@
+<!DOCTYPE html>
 
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>.paper-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBZOOufDw-a6Kqzzt1ShLFlXdwuBSoUnr-BlElSudaAmx_zuxwCFtug7hNO8eN1FrZBoYFEhmMP2K4jr2IKDqfdjZav-4_zionIWOOYT6rFXbje4bCVGl9j0_Y92yhB-zubqpk8ndgqEr51pmfKpnm50jpRDDKYsP_HdK2S0lS6ZBabhtUQMfznQCXDKfcllYFkUaS9D8X2yS9n1kGgDqefbirfNRwgeyYMFK_K-rxImtCtJ25q1yNnrBXRWr1VX_RrUsiaDxcrui0P);
+    background-repeat: repeat
+    }
+.grain-overlay {
+    position: relative
+    }
+.grain-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBZcqAQq6OngnQDFCfmA9cucuwDtq7Do6dMz4MNxQy3VXmzbDzCrCu4eh5qKcqb3j5ge7ge4WqyngzZ0xgtqmrvsmxTjZH8OFLx_lU8YYsI_reoc8GAa3gv-qLKTI3srkaBxarLczqmwcYhVLEEkvhGEbXfNKz2UbqOVQSNfUzQH-Olz58GdOqRBN-uoM1-8Sk9KsALkeaFNxCIP726XaLZr5RgnSqDnDSvLOX6YJk5nciZtqoGY8LfROv5RGbmpQhctNwilqcuWVo9);
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 10
+    }
+.menu-card-shadow {
+    box-shadow: 0 4px 20px -2px rgba(39, 19, 16, 0.06)
+    }
+.active-category {
+    color: #cf8316;
+    border-bottom: 2px solid #cf8316
+    }</style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#fafaf5",
+                        "surface-bright": "#fafaf5",
+                        "on-tertiary-container": "#cf8316",
+                        "error-container": "#ffdad6",
+                        "outline": "#827472",
+                        "tertiary-container": "#432600",
+                        "on-surface": "#1a1c19",
+                        "surface-container-highest": "#e3e3de",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#2b1613",
+                        "outline-variant": "#d3c3c0",
+                        "inverse-surface": "#2f312e",
+                        "surface-container-high": "#e8e8e3",
+                        "on-secondary-container": "#6b6360",
+                        "on-primary-container": "#ae8d87",
+                        "secondary-fixed-dim": "#cfc4c0",
+                        "surface-container-low": "#f4f4ef",
+                        "tertiary": "#261400",
+                        "on-background": "#1a1c19",
+                        "background": "#fafaf5",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#4c4542",
+                        "on-secondary-fixed": "#201a18",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#ece0dc",
+                        "tertiary-fixed": "#ffddba",
+                        "surface-variant": "#e3e3de",
+                        "primary-fixed-dim": "#e3beb8",
+                        "on-surface-variant": "#504442",
+                        "inverse-on-surface": "#f1f1ec",
+                        "on-tertiary-fixed-variant": "#673d00",
+                        "secondary-container": "#ece0dc",
+                        "primary": "#271310",
+                        "surface-dim": "#dadad5",
+                        "on-tertiary-fixed": "#2b1700",
+                        "on-primary-fixed-variant": "#5b403c",
+                        "secondary": "#655d5a",
+                        "inverse-primary": "#e3beb8",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#745853",
+                        "surface-container": "#eeeee9",
+                        "tertiary-fixed-dim": "#ffb866",
+                        "primary-container": "#3e2723",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#ffdad4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "title-lg": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md grain-overlay">
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-50 bg-surface border-b border-secondary-container shadow-sm shadow-primary/5 paper-texture">
+<div class="max-w-[1200px] mx-auto px-margin-desktop py-6 flex justify-between items-center">
+<a class="font-headline-md text-headline-md text-primary italic" href="#">Aroma &amp; Grain</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-secondary font-headline-sm hover:text-on-tertiary-container transition-all duration-300" href="#">Home</a>
+<a class="text-primary border-b-2 border-on-tertiary-container pb-1 font-headline-sm" href="#">Menu</a>
+<a class="text-secondary font-headline-sm hover:text-on-tertiary-container transition-all duration-300" href="#">About</a>
+<a class="text-secondary font-headline-sm hover:text-on-tertiary-container transition-all duration-300" href="#">Locations</a>
+<a class="text-secondary font-headline-sm hover:text-on-tertiary-container transition-all duration-300" href="#">Reservations</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-primary hover:text-on-tertiary-container transition-colors" data-icon="shopping_bag">shopping_bag</button>
+<button class="bg-[#cf8316] text-white px-6 py-2.5 rounded-full font-label-md text-label-md hover:brightness-110 active:scale-95 transition-all shadow-md">Order Now</button>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20">
+<!-- Hero Title Section -->
+<section class="mb-16 text-center max-w-2xl mx-auto">
+<span class="font-label-md text-label-md text-on-tertiary-container uppercase tracking-widest mb-4 block">Artisanal Selection</span>
+<h1 class="font-display-lg text-display-lg md:text-display-lg text-primary mb-6">Our Thoughtful Menu</h1>
+<p class="font-body-lg text-body-lg text-secondary">Every bean is hand-roasted and every pastry is rolled by hand in our boutique kitchen. Savor the rhythm of the slow brew.</p>
+</section>
+<!-- Category Filter -->
+<div class="flex overflow-x-auto pb-4 mb-12 gap-8 sticky top-24 bg-surface/80 backdrop-blur-md z-40 no-scrollbar justify-start md:justify-center border-b border-outline-variant/30">
+<a class="whitespace-nowrap font-headline-sm text-headline-sm pb-2 text-primary hover:text-on-tertiary-container transition-colors active-category" href="#signature-brews">Signature Brews</a>
+<a class="whitespace-nowrap font-headline-sm text-headline-sm pb-2 text-secondary hover:text-on-tertiary-container transition-colors" href="#teas-infusions">Teas &amp; Infusions</a>
+<a class="whitespace-nowrap font-headline-sm text-headline-sm pb-2 text-secondary hover:text-on-tertiary-container transition-colors" href="#handcrafted-pastries">Handcrafted Pastries</a>
+<a class="whitespace-nowrap font-headline-sm text-headline-sm pb-2 text-secondary hover:text-on-tertiary-container transition-colors" href="#seasonal-bites">Seasonal Bites</a>
+</div>
+<!-- Menu Grid -->
+<div class="space-y-24">
+<!-- Signature Brews -->
+<section class="scroll-mt-32" id="signature-brews">
+<div class="flex items-center gap-4 mb-10">
+<h2 class="font-headline-md text-headline-md text-primary">Signature Brews</h2>
+<div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<!-- Item 1 -->
+<div class="group bg-white rounded-xl overflow-hidden menu-card-shadow border-b-2 border-secondary-container transition-transform hover:-translate-y-1">
+<div class="h-56 overflow-hidden">
+<img alt="Velvet Flat White" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A close-up photograph of a meticulously crafted latte with intricate heart-shaped foam art, set against a warm, rustic wooden table. The lighting is soft and golden, highlighting the creamy texture of the milk and the rich, dark espresso underneath. The atmosphere evokes a cozy, morning ritual in a high-end boutique cafe with parchment-toned accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC388i-okQ45-rFs3DmiaE6WJ5f04117hWQfohIMs4KUX7wwvJqpW4oFXqKVG4adVXQkHgN4vaEn73v0O7_UG4ThQHi43ExWJdmVZb3HmJFyQt1mxU2Q7HsjKNmx2Ftyte51D8YGsGwkb1s_fbRWvF05VbdY65UA8y2f3etn9UZ49kmlPK1geuLon565HdFbVbe8Gpl4FMGfDcMsfN8q69i1I9yGNnL1JBnVhCP-0TuFHoK35skTnJ1HgtsMgHl_wBD525IkgeMl7T4"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Velvet Flat White</h3>
+<span class="font-label-md text-label-md text-on-tertiary-container font-bold">$5.50</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mb-4 italic">Double shot of our house Espresso Noir with micro-foamed milk for a silky finish.</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-secondary-container rounded-full text-[10px] font-bold uppercase tracking-tighter text-on-secondary-container">Popular</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group bg-white rounded-xl overflow-hidden menu-card-shadow border-b-2 border-secondary-container transition-transform hover:-translate-y-1">
+<div class="h-56 overflow-hidden">
+<img alt="Single Origin Pour Over" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A slow-drip V60 coffee brewing process in a minimalist ceramic dripper. Clear, amber coffee liquid drips gracefully into a glass carafe. The background is a clean, bright cafe interior with soft white walls and natural light streaming through a window, creating a serene and artisanal mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZij6hDtvve6twrY_-f6mH9LkJefS_DbY5spnMX3KxQKHAOeOFzW59IKJvUYtkzaTJzmqdifXBfG-fDk7KhDunDWhQCtYnJPghwkfJ1QPbuubUrLILdVi_zWprMbJMS5yB29eY-qS4qJdRN6SpZTAd7r-T7LgOE1A3B8rtzmdtVzFRUSg6NDo0NLwQJHPKULbM2zKqYEB4Xkqh-Hnn5Y467D_5S8piPVfY5yjUpX60pX9ajNwbkLcm2yA9oMGAZwOYlo4lrl-TrpZF"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Single Origin Pour Over</h3>
+<span class="font-label-md text-label-md text-on-tertiary-container font-bold">$6.75</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mb-4 italic">Rotating selection of ethically sourced beans, hand-poured via V60 for clarity of flavor.</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-secondary-container rounded-full text-[10px] font-bold uppercase tracking-tighter text-on-secondary-container">Artisanal</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group bg-white rounded-xl overflow-hidden menu-card-shadow border-b-2 border-secondary-container transition-transform hover:-translate-y-1">
+<div class="h-56 overflow-hidden">
+<img alt="Midnight Cold Brew" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An elegant glass of cold brew coffee served over a large, clear ice sphere. The dark, concentrated coffee swirls with a splash of cream, creating a marbled visual effect. The scene is set in a modern, minimalist environment with clean lines and a high-key lighting style that emphasizes the crisp, refreshing nature of the drink." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQmI-ZH6FE9OA7ex21QbuoZIH4gVvP20pIXMrJwQ8qvF3lwqChrJ86_Mt_1Usz3SUXF3Yng-MadynKklB3SNm9sCjdn07fTXNce3iqzxQ8nMMepNsu--Ey_utvJa3u1Ifa0hq2enj_W0z_j3sZfcIQcb00VADlPl1XQxvHvrPn__QHRlrlodDwb0IsHleqgHDWw_7wkdxZdl0RfE2EJ5hgTeh0LvDdoT_kwhyp7xfmNwZXy2GpPkDiCmibySvtvXjRdm2KP_p6YJF7"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Midnight Cold Brew</h3>
+<span class="font-label-md text-label-md text-on-tertiary-container font-bold">$5.25</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mb-4 italic">Steeped for 18 hours for a bold, low-acidity profile with notes of dark chocolate.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Handcrafted Pastries (Bento Style) -->
+<section class="scroll-mt-32" id="handcrafted-pastries">
+<div class="flex items-center gap-4 mb-10">
+<h2 class="font-headline-md text-headline-md text-primary">Handcrafted Pastries</h2>
+<div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-xl menu-card-shadow border-b-2 border-secondary-container bg-white">
+<img alt="Classic Butter Croissant" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A macro shot of a flaky, golden-brown butter croissant resting on a crumpled piece of parchment paper. The layers of pastry are visible and delicate. Warm sunlight casts soft shadows, highlighting the buttery sheen. The overall aesthetic is rustic yet high-end, focusing on the tactile quality and craftsmanship of the bake." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLyg_qsjNg99O0i5w4s1oBlkgzt615tBP7_3tUjAgQB6EfQJFsDG0I8UDbI4Sgr7W_2KplnKAu6ydMZDLnu7KkPlzsZdUtFLdoCnQid4wsERmKUzMiBMys__w1jxjwYrVCgw1m2sYtPaFVJwcCIXvsJOKbMjwN7HnIn7gkaFGePorD6bjP1h6iaCeS7vx1nEFxkWa-2VZPk2OceF7v8VE49BccdZDHExiDYGLH6HsnvW9dZ_rttIX4n_QLEsqkU2rCuIdKiDl-x1m3"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex flex-col justify-end p-8">
+<span class="font-label-md text-label-md text-on-tertiary-container bg-white/90 backdrop-blur px-3 py-1 self-start rounded-full mb-4">Fresh Daily</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2">Heritage Butter Croissant</h3>
+<p class="text-white/80 font-body-md max-w-sm mb-4">Three days in the making. 84 layers of European butter for the ultimate flake.</p>
+<span class="text-white font-bold text-xl">$4.25</span>
+</div>
+</div>
+<div class="md:col-span-2 group relative overflow-hidden rounded-xl menu-card-shadow border-b-2 border-secondary-container bg-white">
+<div class="flex h-full flex-col md:flex-row">
+<div class="w-full md:w-1/2 p-6 flex flex-col justify-center">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Lemon Thyme Tart</h3>
+<p class="text-secondary font-body-md mb-4 italic">Zesty lemon curd infused with garden thyme in a shortbread crust.</p>
+<span class="text-on-tertiary-container font-bold">$6.50</span>
+</div>
+<div class="w-full md:w-1/2 overflow-hidden">
+<img alt="Lemon Thyme Tart" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A delicate lemon tart decorated with a small sprig of fresh thyme and a dusting of powdered sugar. The tart sits on a minimalist ceramic plate in a bright, airy setting. The color palette is dominated by soft yellows, creamy whites, and natural greens, creating a fresh and artisanal visual appeal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_J2MRtNPn9ej5jEwlXlcF1iX9PzXgFjra1tl7MnA2Rr2IvWfeZf4nzhRzil8Uck15KVdk0IphWaM_ApJrDlzm9a0NUy0l44EbPBWrZD_-aUrmL9RJhDwT_rlWsYKg4j14TDwUXAzvRLYVeaE7ScPOOxSGnB1N5RLglJpiwZRHghGMzQ5oRrYFX-jaC9OwEz-9W0ev53Lz9QW8ciAVGRAYtoE1VBMNfMSGXrWQofA2R3tlUUKwJBult5tzUEOlPjMXFf8cSrF_7gtR"/>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 group relative overflow-hidden rounded-xl menu-card-shadow border-b-2 border-secondary-container bg-white">
+<div class="flex h-full flex-col md:flex-row-reverse">
+<div class="w-full md:w-1/2 p-6 flex flex-col justify-center">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Cardamom Knot</h3>
+<p class="text-secondary font-body-md mb-4 italic">Traditional Swedish-style bun with fresh ground cardamom and pearl sugar.</p>
+<span class="text-on-tertiary-container font-bold">$4.75</span>
+</div>
+<div class="w-full md:w-1/2 overflow-hidden">
+<img alt="Cardamom Knot" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Authentic Swedish cardamom buns with visible spice grains and pearl sugar toppings, arranged on a rustic wooden board. The lighting is warm and moody, emphasizing the dark, rich tones of the baked dough and the communal, handcrafted feel of the cafe's pastry selection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq9KvJ02faMw5RYSOAgNEfIYqm-4CUvFc2D9BjmXLvPhyySwAtQK3J4RN19Ir8dMiWC3wsAOJYgMRgtJwSpKyN5fADb0nqiAVJHf2oZbYARD4dEdmwoQLxqSMbKrwBBAz7fA-14Dsq-k4Mj5Vo_I0ril0LnhDcgGSyMph6wgK68WD8OKg1GuUrU_2zpA5ijcSbqyQ5Gju30yu9SZZL3hfXWwysb0zmC9Jafi51cHu2ZzCYUB8CyXUI3v6akVg0AlbEk05WfCvVcz9I"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Teas & Seasonal (Split Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<!-- Teas & Infusions -->
+<section class="scroll-mt-32" id="teas-infusions">
+<div class="flex items-center gap-4 mb-10">
+<h2 class="font-headline-md text-headline-md text-primary">Teas &amp; Infusions</h2>
+<div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+</div>
+<ul class="space-y-8">
+<li class="flex justify-between items-start border-b border-outline-variant/20 pb-6 group">
+<div class="max-w-[80%]">
+<h4 class="font-headline-sm text-headline-sm text-primary group-hover:text-on-tertiary-container transition-colors">Matcha Ceremonial Grade</h4>
+<p class="text-secondary font-body-md italic mt-1">Whisked by hand, sourced from Uji, Japan. Creamy, umami-rich, and vibrant.</p>
+<div class="mt-2 flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container rounded-sm text-[9px] font-bold uppercase text-secondary">Vegan Friendly</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold pt-1">$7.00</span>
+</li>
+<li class="flex justify-between items-start border-b border-outline-variant/20 pb-6 group">
+<div class="max-w-[80%]">
+<h4 class="font-headline-sm text-headline-sm text-primary group-hover:text-on-tertiary-container transition-colors">Golden Glow Latte</h4>
+<p class="text-secondary font-body-md italic mt-1">Turmeric, ginger, and black pepper steamed with oat milk and a touch of honey.</p>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold pt-1">$6.25</span>
+</li>
+<li class="flex justify-between items-start border-b border-outline-variant/20 pb-6 group">
+<div class="max-w-[80%]">
+<h4 class="font-headline-sm text-headline-sm text-primary group-hover:text-on-tertiary-container transition-colors">Wild Berry Hibiscus</h4>
+<p class="text-secondary font-body-md italic mt-1">Cold-brewed botanical tea with dried elderberries and floral hibiscus petals.</p>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold pt-1">$5.50</span>
+</li>
+</ul>
+</section>
+<!-- Seasonal Bites -->
+<section class="scroll-mt-32" id="seasonal-bites">
+<div class="flex items-center gap-4 mb-10">
+<h2 class="font-headline-md text-headline-md text-primary">Seasonal Bites</h2>
+<div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="space-y-6">
+<div class="flex gap-6 items-center p-4 bg-surface-container-low rounded-xl border border-secondary-container/50">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Avocado Sourdough" class="w-full h-full object-cover" data-alt="A slice of artisanal sourdough toast topped with thick, smashed avocado, a perfectly poached egg with a runny yolk, and a sprinkle of chili flakes and sea salt. The dish is presented on a minimalist ceramic plate with a clean, parchment-colored background. High-key lighting emphasizes the fresh, healthy ingredients and the premium, morning-focused vibe of the cafe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClLLss1oDAMUa_8AeOhvltxEOo3tQqdPuUoWGCBnA-YZuldP5f5LDrMSl9U8BV2OgohiTSHbRR5KIGpFOrkZRr1dfgnVc2PpPT0b1V7kZVKpg94jGEP_VWG95xdIqKIOh-JUInGLJssd-FNOlErRUn60fUc6kDc9vdo2KPDSc7aAIBOwpx6RvHJLA0FGGeApIiv93jaP35Pyxy4XOeoM7fBmcWQ2WeDPHj3jovJtCt4_va0GUQX-KVHjY51jmPPnY07_igYCzkBJEm"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-baseline">
+<h4 class="font-title-lg text-title-lg text-primary">Avocado Sourdough</h4>
+<span class="font-label-md text-label-md text-on-tertiary-container font-bold">$14.00</span>
+</div>
+<p class="text-secondary font-body-md italic text-sm mt-1">House sourdough, smashed hass avocado, chili flakes, and a 6-minute egg.</p>
+</div>
+</div>
+<div class="flex gap-6 items-center p-4 bg-surface-container-low rounded-xl border border-secondary-container/50">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Harvest Grain Bowl" class="w-full h-full object-cover" data-alt="A vibrant, healthy grain bowl filled with quinoa, roasted sweet potatoes, fresh kale, and a dollop of hummus. The bowl is beautifully arranged and photographed from an overhead angle on a light-colored table. The lighting is bright and even, conveying a sense of health, wellness, and the organic, artisanal philosophy of the cafe's seasonal food offerings." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPxE8f2rFpXablggI8bnUzDqyyim1APWwty9sWW05yyi_iu3sKOIX8fj3vNpgPzxD88gbiJ-0PBEMJsO67Q8ntQ9u7HKDdihL89X-fo9txDLnmGBLfBqgxKFkwFbl6ulqb51zgh9zw6Mi21ZhVlex-qoG_p-kXsaRGBQEtkkvFdIxibmKkz9Sr0e-P38nPzyDntM0BX2ixLnt7nrHEknr80MdW2mBVxKexUgSNsX1MFEkdI6x-ZxwBUwlcsmVx-pdDd_HZcUdo6v4M"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-baseline">
+<h4 class="font-title-lg text-title-lg text-primary">Harvest Grain Bowl</h4>
+<span class="font-label-md text-label-md text-on-tertiary-container font-bold">$16.50</span>
+</div>
+<p class="text-secondary font-body-md italic text-sm mt-1">Quinoa, roasted seasonal squash, maple-tahini dressing, and toasted pepitas.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Call to Action -->
+<section class="mt-32 p-12 bg-primary-container rounded-3xl relative overflow-hidden flex flex-col items-center text-center">
+<div class="absolute inset-0 opacity-10 paper-texture pointer-events-none"></div>
+<h2 class="font-display-lg text-display-lg text-on-primary-fixed mb-4 relative z-10">Bring the ritual home.</h2>
+<p class="text-on-primary-container font-body-lg mb-8 max-w-xl relative z-10">Subscribe to our monthly roast selection and receive a curated bag of our finest single-origin beans at your doorstep.</p>
+<button class="bg-[#cf8316] text-white px-10 py-4 rounded-full font-title-lg text-title-lg hover:brightness-110 transition-all relative z-10 shadow-xl active:scale-95">Explore Subscriptions</button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 bg-surface-container-low border-t border-secondary-container paper-texture">
+<div class="max-w-[1200px] mx-auto px-margin-desktop py-16 flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="max-w-xs">
+<a class="font-headline-sm text-headline-sm text-primary mb-4 block italic" href="#">Aroma &amp; Grain</a>
+<p class="text-secondary text-body-md leading-relaxed">Crafting quiet moments of excellence through meticulous roasting and artisanal baking. Join our community of coffee lovers.</p>
+</div>
+<div class="grid grid-cols-2 gap-16">
+<div class="flex flex-col gap-4">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-widest">Explore</span>
+<a class="text-secondary hover:text-on-tertiary-container transition-colors hover:underline decoration-on-tertiary-container decoration-2 underline-offset-4" href="#">Sourcing Story</a>
+<a class="text-secondary hover:text-on-tertiary-container transition-colors hover:underline decoration-on-tertiary-container decoration-2 underline-offset-4" href="#">Join the Team</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-widest">Support</span>
+<a class="text-secondary hover:text-on-tertiary-container transition-colors hover:underline decoration-on-tertiary-container decoration-2 underline-offset-4" href="#">Privacy Policy</a>
+<a class="text-secondary hover:text-on-tertiary-container transition-colors hover:underline decoration-on-tertiary-container decoration-2 underline-offset-4" href="#">Contact Us</a>
+</div>
+</div>
+<div class="flex flex-col items-end gap-6">
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:text-on-tertiary-container transition-colors border border-secondary-container" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="share">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:text-on-tertiary-container transition-colors border border-secondary-container" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="location_on">location_on</span>
+</a>
+</div>
+<p class="text-secondary text-label-md text-right">© 2024 Aroma &amp; Grain Boutique Cafe.<br/>Hand-roasted &amp; thoughtfully brewed.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Simple logic for category active state on scroll
+        const categories = document.querySelectorAll('.no-scrollbar a');
+        const sections = document.querySelectorAll('section[id]');
+
+        window.addEventListener('scroll', () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            categories.forEach(link => {
+                link.classList.remove('active-category', 'text-primary');
+                link.classList.add('text-secondary');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active-category', 'text-primary');
+                    link.classList.remove('text-secondary');
+                }
+            });
+        });
+
+        // Atmospheric parallax on hero image scroll
+        window.addEventListener('scroll', () => {
+            const parallaxImages = document.querySelectorAll('.group img');
+            parallaxImages.forEach(img => {
+                const speed = 0.05;
+                const rect = img.getBoundingClientRect();
+                const visible = rect.top < window.innerHeight && rect.bottom > 0;
+                if (visible) {
+                    const scrollValue = (window.innerHeight - rect.top) * speed;
+                    img.style.transform = `translateY(${scrollValue}px) scale(1.1)`;
+                }
+            });
+        });
+    </script>
+</body></html>
